@@ -14,23 +14,11 @@ class ROI():
     def __init__(self):
         self.users = {}
 
-    def create_property(self):
-        # new_property = input("Please choose name for your property: ")
+    def create_property(self, user, property_name, income, income_amount, expense, expense_amount, investment, investment_amount):
 
-        # new_income = input("Enter name for income: ").lower()
-        # new_income_amount = int(input("Enter an amount for income: "))
-                
-        # new_expense = input("Enter name for expense: ").lower()
-        # new_expense_amount = int(input("Enter an amount for montly expense: "))
+        new_property = User(property_name, income, income_amount, expense, expense_amount, investment, investment_amount)
+        self.users[user] = new_property 
         
-        # new_investment = input("Enter name for Investment: ").lower()
-        # new_investment_amount = int(input("Enter an amount for your investment/s: "))
-        # new_user = User(user)
-        # self.users[user]['Properties'] = {}
-        # self.users[user]['Properties'][property_name] = {income : income_amount}
-        # self.users[user]['Properties'][property_name] = {expense : expense_amount}
-        # self.users[user]['Properties'][property_name] = {investment: investment_amount}
-
         """"
         adds property to that specific user 
 
@@ -90,6 +78,7 @@ class ROI():
         self.users[user] = new_user
         
         for user, user_info in self.users.items():
+            print(f"{user} has {user_info}")
             print(f"You have successfully created an account {user.title()} \n")
             print(f"Your property {user_info.property_name} has an income of {user_info.income_amount} \n")
             print(f"expenses of {user_info.expense_amount} \n")
@@ -181,17 +170,17 @@ class User_interface():
             elif nav == "5":
                 ROI.delete()
             elif nav == "6":
-                user = input("Choose a Username: ").lower()
+                user = input(str("Choose a Username: ")).lower()
                 
-                property_name = input("Please choose name for your property: ")
+                property_name = input(str("Please choose name for your property: "))
 
-                income = input("Enter name for income: ").lower()
+                income = input(str("Enter name for income: ")).lower()
                 income_amount = int(input("Enter an amount for income: "))
                 
-                expense = input("Enter name for expense: ").lower()
+                expense = input(str("Enter name for expense: ")).lower()
                 expense_amount = int(input("Enter an amount for expense/s: "))
                 
-                investment = input("Enter name for Investment: ").lower()
+                investment = input(str("Enter name for Investment: ")).lower()
                 investment_amount = int(input("Enter an amount for your investment/s: "))
                 
                 self.roi.create_user(user, property_name, income, income_amount, expense, expense_amount, investment, investment_amount)
